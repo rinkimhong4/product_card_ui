@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:product_card_ui/view/product_details_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -12,14 +13,30 @@ class _ProductScreenState extends State<ProductScreen> {
   final List<String> productCard2 = ['EU23', 'BLACK/WHITE  '];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('Product Card')),
-      body: _buildBody(),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: const Text('Product Card'),
+          bottom: const TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(text: "All"),
+              Tab(text: "Details"),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          physics: const BouncingScrollPhysics(),
+          children: [_buildAllProductsTab(), ProductDetailsTab()],
+        ),
+      ),
     );
   }
 
-  Widget _buildBody() {
+  // ========== All Products ==========
+  Widget _buildAllProductsTab() {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
@@ -34,6 +51,12 @@ class _ProductScreenState extends State<ProductScreen> {
                   _buildProductCard2(),
                   _buildProductCard3(),
                   _buildProductCard4(),
+                  _buildProductCard5(),
+                  _buildProductCard6(),
+                  _buildProductCard7(),
+                  _buildProductCard8(),
+                  _buildProductCard9(),
+                  _buildProductCard10(),
                 ],
               ),
             ),
@@ -312,7 +335,6 @@ class _ProductScreenState extends State<ProductScreen> {
             ],
           ),
         ),
-
         Positioned(
           top: 8,
           right: 12,
@@ -596,6 +618,622 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
               ),
             ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCard5() {
+    return Stack(
+      clipBehavior: Clip.none,
+
+      children: [
+        Container(
+          width: 220,
+          // height: 280,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.06),
+                spreadRadius: 2,
+                blurRadius: 6,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Product Image
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        'https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-13_at_6.50.45_PM.jpg?v=1752390901',
+                    height: 160,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        Icon(Icons.error, size: 32),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Mens Oversized", style: TextStyle(fontSize: 12)),
+                        SizedBox(height: 8),
+                        Text(
+                          'Nike Air Foamposite One',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Container(
+                          height: 42,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "\$63.97",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Container(
+                                width: 32,
+                                height: 32,
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  Icons.add,
+                                  size: 24,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCard6() {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SizedBox(
+          width: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Product Image
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-13_at_6.50.45_PM.jpg?v=1752390901',
+                  height: 160,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.error, size: 32),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Nike Air Foamposite One',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text("Mens Oversized", style: TextStyle(fontSize: 12)),
+                        SizedBox(height: 8),
+                        Text(
+                          "\$63.97",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          right: 15,
+          top: 15,
+          child: Container(
+            width: 35,
+            height: 35,
+            decoration: BoxDecoration(
+              color: Colors.black.withAlpha(70),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.favorite_outline_rounded,
+              size: 24,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCard7() {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SizedBox(
+          width: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Product Image
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-13_at_6.50.45_PM.jpg?v=1752390901',
+                  height: 160,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.error, size: 32),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Nike Air Foamposite One',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text("Mens Oversized", style: TextStyle(fontSize: 12)),
+                        SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "\$63.97",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Container(
+                              width: 35,
+                              height: 35,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withAlpha(70),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.favorite_outline_rounded,
+                                size: 24,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCard8() {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SizedBox(
+          width: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Product Image
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://nobero.com/cdn/shop/files/WhatsApp_Image_2024-08-13_at_6.50.45_PM.jpg?v=1752390901',
+                  height: 160,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.error, size: 32),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'IN STOCK',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[500],
+                          ),
+                        ),
+                        Text(
+                          'Nike Air Foamposite One',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        SizedBox(height: 8),
+                        Row(
+                          spacing: 10,
+                          children: [
+                            Text(
+                              "\$63.97",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red[700],
+                              ),
+                            ),
+                            Container(
+                              // width: 0,
+                              height: 24,
+                              decoration: BoxDecoration(
+                                color: Colors.red.withAlpha(90),
+                                // shape: BoxShape.circle,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 4,
+                                  right: 8,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "40%",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red[700],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCard9() {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SizedBox(
+          width: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Product Image
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-madebymath-90946.jpg&fm=jpg',
+                  height: 160,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error, size: 32),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Camera',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 43, 0, 255),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Nike Air Foamposite One',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "\$63.97",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 43, 0, 255),
+                          ),
+                        ),
+                        Icon(
+                          Icons.shopping_cart_sharp,
+                          size: 24,
+                          color: Color.fromARGB(255, 43, 0, 255),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Discount badge (LEFT)
+        Positioned(
+          top: 8,
+          left: 12,
+          child: Container(
+            height: 27,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color.fromARGB(255, 43, 0, 255),
+            ),
+            child: const Center(
+              child: Text(
+                '40%',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+        // Favorite button (RIGHT)
+        Positioned(
+          top: 8,
+          right: 12,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(25),
+              onTap: () => print("Favorite tapped"),
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black.withAlpha(90),
+                ),
+                child: const Icon(
+                  Icons.favorite_border,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductCard10() {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SizedBox(
+          width: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Product Image
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://plus.unsplash.com/premium_photo-1707932495000-5748b915e4f2?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                  height: 160,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error, size: 32),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'H&M',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withValues(alpha: 0.7),
+                          ),
+                        ),
+                        SizedBox(width: 4),
+                        Icon(Icons.star_rounded, color: Colors.amberAccent),
+                        Text(
+                          '4.9',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withValues(alpha: 0.7),
+                          ),
+                        ),
+                        Text(
+                          '(137)',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withValues(alpha: 0.7),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      '${'Nike Air Foamposite One'.split(' ').take(3).join(' ')}...',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Row(
+                      spacing: 10,
+                      children: [
+                        Text(
+                          "\$63.97",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red[800],
+                          ),
+                        ),
+                        Text(
+                          "\$93.97",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                            decoration: TextDecoration.lineThrough,
+                            decorationColor: Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Favorite button (RIGHT)
+        Positioned(
+          top: 8,
+          right: 12,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(25),
+              onTap: () => print("Favorite tapped"),
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.black.withAlpha(90),
+                ),
+                child: const Icon(
+                  Icons.favorite_border,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ),
         ),
       ],
